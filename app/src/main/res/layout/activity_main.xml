@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:gravity="center_vertical|center_horizontal"
+    android:paddingHorizontal="20dp"
+    tools:context=".MainActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="6dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonOne"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+
+        <Button
+            android:id="@+id/buttonTwo"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:layout_marginHorizontal="6pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name" />
+
+        <Button
+            android:id="@+id/buttonThree"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="6dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonFour"
+
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+
+        <Button
+            android:id="@+id/buttonFive"
+
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:layout_marginHorizontal="6pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name" />
+
+        <Button
+            android:id="@+id/buttonSix"
+
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="6dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonSeven"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+
+        <Button
+            android:id="@+id/buttonEight"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:layout_marginHorizontal="6pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name" />
+
+        <Button
+            android:id="@+id/buttonNine"
+            android:layout_width="44pt"
+            android:layout_height="44pt"
+            android:background="@drawable/touch_game"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/touch_name"
+
+            />
+    </TableRow>
+
+</TableLayout>

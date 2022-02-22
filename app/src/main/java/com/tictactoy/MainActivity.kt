@@ -1,7 +1,9 @@
 package com.tictactoy
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -12,18 +14,20 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    var whoIsPlayer = 1
+    private var whoIsPlayer = 1
     private val viewSelectedPlayOne = ArrayList<Int>()
     private val viewSelectedPlayTwo = ArrayList<Int>()
     private val machinePlay = ArrayList<Int>()
-    var winner = 0;
+    private var winner = 0
+    private var quantityPlayerOneWin = 0
+    private var quantityPlayerTwoWin = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
-        window.statusBarColor = ContextCompat.getColor(this,R.color.gray)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
         buttonOne.setOnClickListener(this)
         buttonTwo.setOnClickListener(this)
         buttonThree.setOnClickListener(this)
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         buttonEight.setOnClickListener(this)
         buttonNine.setOnClickListener(this)
     }
+
 
     override fun onClick(view: View) {
         //estou faznedo cast para button para possuir acesso as props desse componente
@@ -70,12 +75,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             whoIsPlayer = 1
         }
         //permitir que nao selecione campos ja selecionados
-        buttonSelected.isEnabled = false;
-        whoIsWin()
+        buttonSelected.isEnabled = false
+        if (whoIsWin() == 0) {
+            resetGame()
+        }
 
     }
 
-    private fun whoIsWin() {
+    @SuppressLint("SetTextI18n")
+    private fun whoIsWin(): Int {
         // isso foi facilitado porque formatei no onCLick
         if (viewSelectedPlayOne.contains(1) && viewSelectedPlayOne.contains(2) && viewSelectedPlayOne.contains(
                 3
@@ -151,11 +159,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             winner = 2
         }
         if (winner == 1) {
+            quantityPlayerOneWin += 1
             Toast.makeText(this, "Winner is player 1", Toast.LENGTH_LONG).show()
+            text_playerOne.text = "Player one $quantityPlayerOneWin"
+            return 0
         }
         if (winner == 2) {
+            quantityPlayerTwoWin += 1
             Toast.makeText(this, "Winner is player 2", Toast.LENGTH_LONG).show()
+            text_playerTwo.text = "Player two $quantityPlayerTwoWin"
+            return 0
         }
+        return 1
     }
 
     private fun autoplay() {
@@ -165,9 +180,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        val numberRandom = Random()
-        val numberSelected = numberRandom.nextInt(machinePlay.size)
-        val idViewSelected = machinePlay[numberSelected]
+        var numberRandom = Random()
+        var numberSelected = numberRandom.nextInt(machinePlay.size)
+        var idViewSelected = machinePlay[numberSelected]
+        if(viewSelectedPlayOne.contains(idViewSelected)){
+             numberRandom = Random()
+             numberSelected = numberRandom.nextInt(machinePlay.size)
+             idViewSelected = machinePlay[numberSelected]
+        }
         val buttonSelected = when (idViewSelected) {
             1 -> buttonOne
             2 -> buttonTwo
@@ -177,9 +197,45 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             6 -> buttonSix
             7 -> buttonSeven
             8 -> buttonEight
-            else -> buttonNine;
+            else -> buttonNine
         }
-        playGame(buttonSelected,idViewSelected)
+        playGame(buttonSelected, idViewSelected)
+
+    }
+
+    private fun resetGame() {
+        whoIsPlayer = 1
+        winner = 0
+        viewSelectedPlayOne.clear()
+        viewSelectedPlayTwo.clear()
+        machinePlay.clear()
+        buttonOne.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonOne.text = ""
+        buttonOne.isEnabled = true
+        buttonTwo.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonTwo.text = ""
+        buttonTwo.isEnabled = true
+        buttonThree.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonThree.text = ""
+        buttonThree.isEnabled = true
+        buttonFour.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonFour.text = ""
+        buttonFour.isEnabled = true
+        buttonFive.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonFive.text = ""
+        buttonFive.isEnabled = true
+        buttonSix.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonSix.text = ""
+        buttonSix.isEnabled = true
+        buttonSeven.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonSeven.text = ""
+        buttonSeven.isEnabled = true
+        buttonEight.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonEight.text = ""
+        buttonEight.isEnabled = true
+        buttonNine.background = ContextCompat.getDrawable(this, R.color.white)
+        buttonNine.text = ""
+        buttonNine.isEnabled = true
 
     }
 }

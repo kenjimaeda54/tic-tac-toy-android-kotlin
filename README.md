@@ -11,7 +11,7 @@ Criar  aplicativo idêntico ao jogo da velha, para praticar conceito desenvolvim
 
 
 ``` kotlin
- window.insetsController.hide(WindowInsets.Type.statusBars())
+  window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
     
  buttonOne.background = ContextCompat.getDrawable(this, R.color.white)
  buttonOne.text = ""
